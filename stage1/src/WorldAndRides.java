@@ -9,6 +9,7 @@ import java.io.*;
  */
 public class WorldAndRides{
     String[] rideData;
+    String[] rideList;
     int worldRow;
     int worldColumns;
     int vehicles;
@@ -20,8 +21,8 @@ public class WorldAndRides{
     int start;
     int finish;
     //TODO decide a proper data-structure to store the information about the world
-    //and the requested rides.
-
+    
+        //make an array for the rides to send to allocations.
 
     public WorldAndRides(String worldAndRidesFileName) throws FileFormatException {
         //TODO read the world information from worldAndRidesFileName
@@ -48,6 +49,7 @@ public class WorldAndRides{
                 {
                     rideData = data.split("\\s");
                     setRide(rideData);
+                    count++;
                 }
             }
             myReader.close();
@@ -56,6 +58,7 @@ public class WorldAndRides{
         {
             myReader.close();
         }
+        
     }
     //TODO define appropriate methods for this class.
 
