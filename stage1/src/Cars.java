@@ -90,8 +90,8 @@ public class Cars
     {
           isearly(value);  
           start = time;
-          int x = location[0]- destination[0];
-          int y = location[1]- destination[1];
+          int x =Math.abs( location[0]- destination[0]);
+          int y = Math.abs(location[1]- destination[1]);
           calculation = x + y ;
           position = destination;
           time = time + calculation;
