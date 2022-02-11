@@ -1,6 +1,5 @@
 import java.util.*;
 import java.io.*;
-
 /**
  * Write a description of class WorldAndRides here.
  *
@@ -8,26 +7,19 @@ import java.io.*;
  * @version (a version number or a date)
  */
 public class WorldAndRides{
-    String[] rideData;
-    String[] rideList;
+    ArrayList<Rides> list = new ArrayList<>();
     int worldRow;
     int worldColumns;
     int vehicles;
     int rides;
     int bonus;
     int steps;
-    int[] location;
-    int[] destination;
-    int start;
-    int finish;
     //TODO decide a proper data-structure to store the information about the world
-    
-        //make an array for the rides to send to allocations.
-
+    //make an array for the rides to send to allocations.
     public WorldAndRides(String worldAndRidesFileName) throws FileFormatException {
         //TODO read the world information from worldAndRidesFileName
         //and store the information in this class
-        
+        readFile(worldAndRidesFileName);
         //TODO read the information about the requested rides and store the
         //information in this class
     }
@@ -47,8 +39,9 @@ public class WorldAndRides{
                 }
                 else
                 {
-                    rideData = data.split("\\s");
-                    setRide(rideData);
+                    String[]rideData = data.split("\\s");
+                    Rides ride = new Rides(rideData);
+                    list.add(ride);
                     count++;
                 }
             }
@@ -58,52 +51,31 @@ public class WorldAndRides{
         {
             myReader.close();
         }
-        
     }
     //TODO define appropriate methods for this class.
 
     public void setWorld(String[] worldData)
-        {
-            worldRow = Integer.parseInt( worldData[0]);
-            worldColumns = Integer.parseInt( worldData[1]);
-            vehicles = Integer.parseInt( worldData[2]);
-            rides =  Integer.parseInt(worldData[3]);
-            bonus = Integer.parseInt( worldData[4]);
-            steps = Integer.parseInt( worldData[5]);
-        }
-
-    public void setRide (String[] rideData)
-        {
-            location[0]= Integer.parseInt( rideData[0]);
-            location[1]= Integer.parseInt( rideData[1]);
-            destination[0]= Integer.parseInt( rideData[3]);
-            destination[1]=  Integer.parseInt(rideData[4]);
-            start =  Integer.parseInt( rideData[5]);
-            finish =  Integer.parseInt(rideData[6]);
-        }
-        
-    public int[] getLocation()
     {
-        return location;
-    }
-        
-    public int[] getDestination()
-    {
-        return destination;
-    }
-        
-    public int getStart()
-    {
-        return start;
-    }   
+        worldRow = Integer.parseInt( worldData[0]);
+        worldColumns = Integer.parseInt( worldData[1]);
+        vehicles = Integer.parseInt( worldData[2]);
+        rides =  Integer.parseInt(worldData[3]);
+        bonus = Integer.parseInt( worldData[4]);
+        steps = Integer.parseInt( worldData[5]);
+    } 
     
     public int getVehicles()
     {
         return vehicles;
     }
     
-    public int getFinish()
+    public ArrayList getList()
     {
-        return finish;
+        return list;
     }
+    
+    public int getBonus()
+     {
+         return bonus;
+        }
 }

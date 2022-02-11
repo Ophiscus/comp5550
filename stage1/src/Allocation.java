@@ -11,18 +11,15 @@ public class Allocation
 
 {
     private WorldAndRides routes;
-    int[] location;
-    int[] destination;
-    int start;
-    int finish;
-    int rideCount;
+    ArrayList<RideData> routList;
+    String[]allocationData;
+    Cars[] car;
     int allocation;
-    int exactRide;
     public Allocation(String allocationFileName, WorldAndRides worldAndRides) throws FileFormatException {
         //TODO read an allocation from allocationFileName and stores the content in
         //an appropriate datastructure inside this class
         routes = worldAndRides;
-        rideCount = 0;
+        readFile(allocationFileName);
         makeCars(worldAndRides);
     }
     
@@ -33,7 +30,8 @@ public class Allocation
         try  {
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String[]worldData = data.split("\\s");
+                allocationData = data.split("\\s");
+                ride(allocationData);
                 count++;
             }
             myReader.close();
@@ -44,28 +42,29 @@ public class Allocation
         }
     }
     
-    public void getRides (String [] data)
-    {
-        location[0]= Integer.parseInt( data[0]);
-        location[1]= Integer.parseInt( data[1]);
-        destination[0]= Integer.parseInt( data[3]);
-        destination[1]=  Integer.parseInt(data[4]);
-        start =  Integer.parseInt( data[5]);
-        finish =  Integer.parseInt(data[6]);
-    }
-    
-    public void getRoutes(String [] data)
-    {
-        allocation =Integer.parseInt( data[0]);
-        
-        for(int i = 1; i< data.length;count++)
-        {
-            exactRide = data[i];
-        }
-        //TODO define appropriate methods for this class (e.g. accessor methods)
-    }
-    
     public void makeCars(WorldAndRides worldAndRides)
     {
-        Cars[] car = Car[woldAndRide.getVehicle()];
+        car = new Cars[worldAndRides.getVehicles()];
     }
+    
+    public void ride(String[]allocationData)
+    {
+        RideData data = new RideData();
+        data.setCar(Integer.parseInt(allocationData[0]));
+        for(int i =1 ; i< allocationData.length; i++)
+        {
+            data.addData(Integer.parseInt(allocationData[i]));
+        }
+        routList.add(data);
+    }
+    
+    public Cars[] getCars()
+    {
+        return car;
+    }
+    
+    public ArrayList getRoutes()
+    {
+        return routList;
+    }
+}

@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * Write a description of class Simulation here.
  *
@@ -9,10 +9,12 @@ public class Simulation
 {
    String worldAndRidesFileName;
    String allocationFileName; 
-    
+   int score; 
+   int bonus;
    public Simulation(String worldAndRidesFileName, String allocationFileName) {
        this.worldAndRidesFileName = worldAndRidesFileName;
        this.allocationFileName = allocationFileName;
+       score = 0;
    }
     
     
@@ -20,10 +22,48 @@ public class Simulation
        
        try {
            WorldAndRides worldAndRides = new WorldAndRides(worldAndRidesFileName);
-       
+           ArrayList<Rides> list = worldAndRides.getList();
+           bonus = worldAndRides.getBonus();
            Allocation allocation = new Allocation(allocationFileName, worldAndRides);
-           
-           int score = 0;
+           ArrayList<RideData> routList = allocation.getRoutes();
+           Cars[]car = allocation.getCars();
+           for(int i = 0 ; i < routList.size(); i++)
+           {
+               RideData data = routList.get(i);
+               int carNumber = data.getCar();
+               Cars currentCar = car[carNumber];
+               ArrayList<Integer>routes = data.getRideData();
+               for(int j = 0 ; j < routes.size(); j++)
+               {
+                   int currentRide = routes.get(j);
+                   Rides ride = list.get(currentRide - 1);
+                   currentCar.setLocation(ride.getLocation());
+                   currentCar.setDestination(ride.getDestination());
+                   currentCar.calculate(ride.getStart());
+                   if(currentCar.getVerdict() == true)
+                   {
+                       if(ride.getFinish() >= currentCar.getTime())
+                       {
+                            score = currentCar.getCalculation() + bonus;
+                        }
+                        else
+                        {
+                            score = 0;
+                        }
+                    }
+                    else
+                    {
+                        if(ride.getFinish() >= currentCar.getTime())
+                       {
+                            score = currentCar.getTime();
+                        }
+                        else
+                        {
+                            score = 0;
+                        }
+                    }
+                }
+            }
            //compute score of allocation
            //....
            System.out.println(score);
@@ -32,4 +72,5 @@ public class Simulation
        }
        
    }
+   
 }
