@@ -44,22 +44,22 @@ public class Simulation
                    {
                        if(ride.getFinish() >= currentCar.getTime())
                        {
-                            score = currentCar.getCalculation() + bonus;
+                            score = score + currentCar.getCalculation() + bonus;
                         }
                         else
                         {
-                            score = 0;
+                            score = score + 0;
                         }
                     }
                     else
                     {
                         if(ride.getFinish() >= currentCar.getTime())
                        {
-                            score = currentCar.getTime();
+                            score =score + currentCar.getTime();
                         }
                         else
                         {
-                            score = 0;
+                            score = score + 0;
                         }
                     }
                 }

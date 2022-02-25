@@ -16,7 +16,7 @@ public class Cars
         destination = new int[2];
         position = new int[2];
         position[0] = 0;
-        position[1] = 1;
+        position[1] = 0;
     }
     
     public void setTime(int number)
@@ -76,7 +76,7 @@ public class Cars
             int incase= i + j + time;
             if(incase <= value )
             {
-                time = incase;
+                time = value;
                 verdict = true;
             }
             else
@@ -90,7 +90,7 @@ public class Cars
     {
           isearly(value);  
           start = time;
-          int x =Math.abs( location[0]- destination[0]);
+          int x =Math.abs(location[0]- destination[0]);
           int y = Math.abs(location[1]- destination[1]);
           calculation = x + y ;
           position = destination;
