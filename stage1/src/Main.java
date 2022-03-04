@@ -1,5 +1,5 @@
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws java.io.IOException {
     String worldAndRidesFileName = args[0];
     String allocationFileName = args[1];
     

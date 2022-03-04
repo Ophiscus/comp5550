@@ -16,40 +16,46 @@ public class WorldAndRides{
     int steps;
     //TODO decide a proper data-structure to store the information about the world
     //make an array for the rides to send to allocations.
-    public WorldAndRides(String worldAndRidesFileName) throws FileFormatException {
-        //TODO read the world information from worldAndRidesFileName
-        //and store the information in this class
-        readFile(worldAndRidesFileName);
+    public WorldAndRides(String worldAndRidesFileName) throws IOException, FileFormatException {
+        try
+        {
+            //TODO read the world information from worldAndRidesFileName
+            //and store the information in this class
+            readFile(worldAndRidesFileName);
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            fnfe.printStackTrace();
+        }
         //TODO read the information about the requested rides and store the
         //information in this class
     }
 
-    public void readFile(String worldAndRidesFileName) throws FileFormatException
+    public void readFile(String worldAndRidesFileName) throws IOException,FileNotFoundException,FileFormatException
     {
         int count = 1;
-        Scanner myReader = new Scanner(worldAndRidesFileName);
+        BufferedReader br = new BufferedReader(new FileReader(worldAndRidesFileName));
+        String line = "";
         try  {
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
+            while ((line = br.readLine()) != null) {
                 if (count == 1)
                 {
-                    String[]worldData = data.split("\\s");
+                    String[]worldData = line.split("\\s");
                     setWorld(worldData);
                     count++;
                 }
                 else
                 {
-                    String[]rideData = data.split("\\s");
+                    String[]rideData = line.split("\\s");
                     Rides ride = new Rides(rideData);
                     list.add(ride);
                     count++;
                 }
             }
-            myReader.close();
         } 
-        finally
+        catch(FileNotFoundException fe)
         {
-            myReader.close();
+            fe.printStackTrace();
         }
     }
     //TODO define appropriate methods for this class.

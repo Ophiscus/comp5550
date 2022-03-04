@@ -71,8 +71,8 @@ public class Cars
         }
         else
         {
-            int i = position[0]- location[0];
-            int j = position[1]- location[1];
+            int i =Math.abs(position[0]- location[0]);
+            int j =Math.abs(position[1]- location[1]);
             int incase= i + j + time;
             if(incase <= value )
             {
@@ -81,6 +81,7 @@ public class Cars
             }
             else
             {
+                time = incase;
                 verdict = false;
             }
         }

@@ -1,4 +1,6 @@
 import java.util.*;
+import java.io.*;
+
 /**
  * Write a description of class Simulation here.
  *
@@ -18,7 +20,7 @@ public class Simulation
    }
     
     
-   public void run() {
+   public void run()  throws IOException{
        
        try {
            WorldAndRides worldAndRides = new WorldAndRides(worldAndRidesFileName);
