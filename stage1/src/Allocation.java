@@ -52,7 +52,13 @@ public class Allocation
     
     public void makeCars(WorldAndRides worldAndRides)
     {
-        car = new Cars[worldAndRides.getVehicles()];
+        int number = worldAndRides.getVehicles();
+        car = new Cars[number];
+        for(int i = 0; i <= number - 1; i++)
+        {
+            Cars newCar = new Cars();
+            car[i] = newCar;
+        }
     }
     
     public void ride(String[]allocationData)

@@ -26,14 +26,16 @@ public class Simulation
            WorldAndRides worldAndRides = new WorldAndRides(worldAndRidesFileName);
            ArrayList<Rides> list = worldAndRides.getList();
            bonus = worldAndRides.getBonus();
+           
            Allocation allocation = new Allocation(allocationFileName, worldAndRides);
            ArrayList<RideData> routList = allocation.getRoutes();
            Cars[]car = allocation.getCars();
+           
            for(int i = 0 ; i < routList.size(); i++)
            {
                RideData data = routList.get(i);
                int carNumber = data.getCar();
-               Cars currentCar = car[carNumber];
+               Cars currentCar = car[carNumber - 1];
                ArrayList<Integer>routes = data.getRideData();
                for(int j = 0 ; j < routes.size(); j++)
                {

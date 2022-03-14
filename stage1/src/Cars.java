@@ -2,9 +2,9 @@ import  java.util.*;
 public class Cars
 {
      int time;
-     int[] destination;
-     int[] location;
-     int[] position;
+     int[] destination= new int[2];;
+     int[] location = new int[2];;
+     int[] position = new int[2];;
      int calculation;
      int start;
      boolean verdict;
@@ -12,9 +12,10 @@ public class Cars
     {
         time = 0;
         start = 0;
-        location = new int[2];
-        destination = new int[2];
-        position = new int[2];
+        location [0] = 0;
+        location [1] = 0;
+        destination[0] = 0; 
+        destination[1] = 0; 
         position[0] = 0;
         position[1] = 0;
     }
@@ -31,7 +32,8 @@ public class Cars
     
     public void setLocation(int[] number)
     {
-        location = number;
+        location [0]= number[0];
+        location[1] = number[1];
     }
     
     public int getTime()
