@@ -21,7 +21,7 @@ public class Simulation
     
     
    public void run()  throws IOException{
-       
+       score = 0;
        try {
            WorldAndRides worldAndRides = new WorldAndRides(worldAndRidesFileName);
            ArrayList<Rides> list = worldAndRides.getList();
@@ -31,13 +31,13 @@ public class Simulation
            ArrayList<RideData> routList = allocation.getRoutes();
            Cars[]car = allocation.getCars();
            
-           for(int i = 0 ; i < routList.size(); i++)
+           for(int i = 0 ; i <= routList.size() -1; i++)
            {
                RideData data = routList.get(i);
                int carNumber = data.getCar();
                Cars currentCar = car[carNumber - 1];
                ArrayList<Integer>routes = data.getRideData();
-               for(int j = 0 ; j < routes.size(); j++)
+               for(int j = 0 ; j <= routes.size() -1; j++)
                {
                    int currentRide = routes.get(j);
                    Rides ride = list.get(currentRide - 1);
