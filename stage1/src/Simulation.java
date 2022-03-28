@@ -40,7 +40,7 @@ public class Simulation
                for(int j = 0 ; j <= routes.size() -1; j++)
                {
                    int currentRide = routes.get(j);
-                   Rides ride = list.get(currentRide - 1);
+                   Rides ride = list.get(currentRide);
                    currentCar.setLocation(ride.getLocation());
                    currentCar.setDestination(ride.getDestination());
                    currentCar.calculate(ride.getStart());
