@@ -37,7 +37,7 @@ public class Simulation
                int carNumber = data.getCar();
                Cars currentCar = car[carNumber - 1];
                ArrayList<Integer>routes = data.getRideData();
-               for(int j = 0 ; j <= routes.size() -1; j++)
+               for(Integer j : routes)
                {
                    int currentRide = routes.get(j);
                    Rides ride = list.get(currentRide);
@@ -59,7 +59,7 @@ public class Simulation
                     {
                         if(ride.getFinish() >= currentCar.getTime())
                        {
-                            score =score + currentCar.getTime();
+                            score =score + currentCar.getCalculation();
                         }
                         else
                         {
