@@ -54,10 +54,12 @@ public class Allocation
     {
         int number = worldAndRides.getVehicles();
         car = new Cars[number];
-        for(int i = 0; i <= number - 1; i++)
+        int i = 0;
+        while( i < number)
         {
             Cars newCar = new Cars();
             car[i] = newCar;
+            i++;
         }
     }
     
