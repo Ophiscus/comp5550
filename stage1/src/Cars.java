@@ -63,18 +63,18 @@ public class Cars
     
     public void isearly(int value)
     {
-        if(position == location && start <= value )
+        if(position == location && time <= value )
         {
             verdict = true;
         }
-        else if(position == location && start > value)
+        else if(position == location && time > value)
         {
             verdict = false;
         }
         else
         {
-            int i =Math.abs(position[0]- location[0]);
-            int j =Math.abs(position[1]- location[1]);
+            int i =Math.abs(location[0] - position[0]);
+            int j =Math.abs(location[1] - position[1]);
             int incase= i + j + time;
             if(incase <= value )
             {
@@ -91,10 +91,9 @@ public class Cars
     
     public void calculate(int value)
     {
-          isearly(value);  
-          start = time;
-          int x =Math.abs(location[0]- destination[0]);
-          int y = Math.abs(location[1]- destination[1]);
+          isearly(value); 
+          int x =Math.abs( destination[0] - location[0]);
+          int y = Math.abs( destination[1] -  location[1]);
           calculation = x + y ;
           position = destination;
           time = time + calculation;
