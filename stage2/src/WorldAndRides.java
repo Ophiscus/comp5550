@@ -35,6 +35,7 @@ public class WorldAndRides{
     public void readFile(String worldAndRidesFileName) throws IOException,FileNotFoundException
     {
         int count = 1;
+        int rideCount = 0;
         BufferedReader br = new BufferedReader(new FileReader(worldAndRidesFileName));
         String line = "";
         try  {
@@ -49,8 +50,10 @@ public class WorldAndRides{
                 {
                     String[]rideData = line.split("\\s");
                     Rides ride = new Rides(rideData);
+                    ride.setRideNumber(rideCount);
                     list.add(ride);
                     count++;
+                    rideCount++;
                 }
             }
         } 
