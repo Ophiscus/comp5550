@@ -32,7 +32,7 @@ public class Simulation
         rides = worldAndRide.getList();
         cars = worldAndRide.getVehicles();
         int count = 0;
-        for (int i = 0 ; i <= rides.size(); i++)
+        for (int i = 0 ; i <= rides.size() -1; i++)
         {
             Cars car = cars.get(count);
             car.addRide(rides.get(i));
@@ -42,7 +42,7 @@ public class Simulation
                 count = 0;
             }
         }
-        for(int j = 0; j <= cars.size(); j++)
+        for(int j = 0; j <= cars.size() -1; j++)
         {
             printAllocation(j);
         }
@@ -51,12 +51,14 @@ public class Simulation
    public void printAllocation(int number)
    {
        Cars car = cars.get(number);
-       ArrayList currentRides = car.getRides();
-       System.out.print("{" + car + " ");
-        for(int i = 0; i >= currentRides.size(); i++)
+       int carNumber = number + 1;
+       ArrayList <Rides> currentRides = car.getRides();
+       System.out.print( carNumber + " " );
+        for(int i = 0; i <= currentRides.size() - 1; i++)
         {
-            System.out.print(currentRides.get(i)+ " ");
+            Rides instance = currentRides.get(i);
+            System.out.print(instance.getRideNumber() + " ");
         }
-        System.out.print("}" +"\n");
+        System.out.print("\n");
     }
 }
