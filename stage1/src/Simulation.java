@@ -20,6 +20,10 @@ public class Simulation
    }
     
     
+   /**
+    * Method run
+    *
+    */
    public void run()  throws IOException{
        score = 0;
        try {
@@ -33,11 +37,23 @@ public class Simulation
            
            for(int i = 0 ; i <= routList.size() -1; i++)
            {
-               RideData data = routList.get(i);
-               int carNumber = data.getCar();
-               Cars currentCar = car[carNumber - 1];
+               RideData data;
+               int carNumber;
+               Cars currentCar;
+               if(routList.size() == 1)
+               {
+                   data = routList.get(0);
+                   currentCar = car[0];
+                }
+                else{
+                   data = routList.get(i);
+                   carNumber= data.getCar();
+                   currentCar = car[carNumber - 1];
+                   
+                }
                ArrayList<Integer>routes = data.getRideData();
-               for(Integer j : routes)
+               int j = 0;
+               while(routes.size() - 1 >= j)
                {
                    int currentRide = routes.get(j);
                    Rides ride = list.get(currentRide);
@@ -66,6 +82,7 @@ public class Simulation
                             score = score + 0;
                         }
                     }
+                    j++;
                 }
             }
            //compute score of allocation
