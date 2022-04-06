@@ -73,7 +73,7 @@ public class WorldAndRides{
         bonus = Integer.parseInt( worldData[4]);
         steps = Integer.parseInt( worldData[5]);
         
-        for(int i = 0 ; i <= vehicles; i++)
+        for(int i = 0 ; i <= vehicles -1; i++)
         {
             Cars car = new Cars();
             carList.add(car);
