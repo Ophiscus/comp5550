@@ -12,7 +12,7 @@ public class Rides
     int[] destination = new int[2];
     int start = 0;
     int finish = 0;
-
+    int rideNumber = 0;
     /**
      * Constructor for objects of class Rides
      */
@@ -45,6 +45,16 @@ public class Rides
     public int getFinish()
     {
         return finish;
+    }
+    
+    public void setRideNumber(int number)
+    {
+        rideNumber = number;
+    }
+    
+    public int getRideNumber()
+    {
+        return rideNumber;
     }
 }
 
